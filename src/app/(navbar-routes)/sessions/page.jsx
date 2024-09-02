@@ -1,10 +1,11 @@
-"use client"
-import { useState, useEffect } from "react"
-import SessionCard from "./session_card"
+"use client";
+import { useState, useEffect } from "react";
+import SessionCard from "./session_card";
 
 export default function Sessions() {
-  const [sessions, setSessions] = useState([])
-  const [open, setOpen] = useState(false)
+  const [sessions, setSessions] = useState([]);
+  const [open, setOpen] = useState(false);
+
   useEffect(() => {
     // Simulating an API call
     const fetchSessions = async () => {
@@ -36,12 +37,12 @@ export default function Sessions() {
           type: "video",
         },
         // Add more mock sessions as needed
-      ]
-      setSessions(mockSessions)
-    }
+      ];
+      setSessions(mockSessions);
+    };
 
-    fetchSessions()
-  }, [])
+    fetchSessions();
+  }, []);
 
   const handleUpdateRating = (sessionId, newRating) => {
     // Update the rating in your state or send an API request
@@ -49,26 +50,27 @@ export default function Sessions() {
       prevSessions.map((session) =>
         session.id === sessionId ? { ...session, rating: newRating } : session
       )
-    )
+    );
     // Optionally, send an API request to update the rating on the server
-  }
+  };
 
   return (
-    <>
-      <div className="mx-auto px-4 py-8 flex flex-col h-full gap-6">
-        <h1 className="text-4xl font-bold text-gray-800">Sessions History</h1>
-        <div className="flex flex-wrap gap-6">
-          {sessions.map((session) => (
+    <div className="mx-auto px-4 py-8 flex flex-col h-full gap-6">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800">
+        Sessions History
+      </h1>
+      <div className="flex flex-col gap-6 sm:flex-row sm:flex-wrap">
+        {sessions.map((session) => (
+          <div key={session.id} className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4">
             <SessionCard
-              key={session.id}
               session={session}
               open={open}
               setOpen={setOpen}
               onUpdateRating={handleUpdateRating}
             />
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
-    </>
-  )
+    </div>
+  );
 }

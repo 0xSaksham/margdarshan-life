@@ -7,11 +7,15 @@ export default function StatCard({
 }) {
   return (
     <div
-      className={`${bgColor} w-[270px] rounded-3xl shadow-lg shadow-gray-300 p-6 flex flex-col items-center justify-center`}
+      className={`${bgColor} w-full sm:w-[270px] rounded-3xl shadow-lg shadow-gray-300 p-4 sm:p-6 flex flex-col items-center justify-center`}
     >
-      <div className="text-4xl mb-4 bg-gray-100 p-3 rounded-xl">{icon}</div>
-      <h3 className={` ${titleColor} text-lg font-medium mb-2`}>{title}</h3>
-      <p className="text-3xl font-semibold">{value}</p>
+      <div className="text-3xl sm:text-4xl mb-2 sm:mb-4 bg-gray-100 p-2 sm:p-3 rounded-xl">
+        {icon}
+      </div>
+      <h3 className={`${titleColor} text-base sm:text-lg font-medium mb-1 sm:mb-2`}>
+        {title}
+      </h3>
+      <p className="text-2xl sm:text-3xl font-semibold">{value}</p>
     </div>
-  )
+  );
 }

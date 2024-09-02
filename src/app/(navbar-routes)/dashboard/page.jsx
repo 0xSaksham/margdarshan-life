@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 import {
   Users,
   Clock,
@@ -9,10 +9,10 @@ import {
   Bot,
   Video,
   MessageCircle,
-} from "lucide-react"
-import Greetings from "./components/greetings"
-import PrimaryButton from "@/components/buttons/primary_button"
-import StatCard from "./components/status_card"
+} from "lucide-react";
+import Greetings from "./components/greetings";
+import PrimaryButton from "@/components/buttons/primary_button";
+import StatCard from "./components/status_card";
 
 export default function Home() {
   const [menteeStats, setMenteeStats] = useState({
@@ -20,7 +20,7 @@ export default function Home() {
     totalHours: 0,
     skillsImproved: 0,
     upcomingSessions: 0,
-  })
+  });
 
   useEffect(() => {
     setMenteeStats({
@@ -28,15 +28,15 @@ export default function Home() {
       totalHours: 18,
       skillsImproved: 5,
       upcomingSessions: 2,
-    })
-  }, [])
+    });
+  }, []);
 
   return (
     <div className="px-4 py-8 flex flex-col h-full gap-4">
       <Greetings />
-      <div className="flex flex-row gap-8 h-full justify-between">
-        <div className="flex flex-col gap-4">
-          <div className="flex flex-row gap-4">
+      <div className="flex flex-col lg:flex-row gap-8 h-full justify-between">
+        <div className="flex flex-col gap-4 w-full lg:w-1/2">
+          <div className="flex flex-col sm:flex-row gap-4">
             <StatCard
               titleColor="text-gray-500"
               icon={<Users className="text-blue-500" size={30} />}
@@ -50,7 +50,7 @@ export default function Home() {
               value={`${menteeStats.totalHours}h`}
             />
           </div>
-          <div className="flex flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-4">
             <StatCard
               titleColor="text-gray-500"
               icon={<GraduationCap className="text-purple-500" size={30} />}
@@ -78,7 +78,7 @@ export default function Home() {
               <PrimaryButton
                 // clickFunction={}
                 disabled={false}
-                width="35%"
+                width="full lg:w-1/2"
                 height="40px"
                 buttonText="Talk Now"
                 rounded="rounded-full"
@@ -86,10 +86,10 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-4 bg-white shadow-lg shadow-gray-300 p-6 rounded-3xl w-full ">
+        <div className="flex flex-col gap-4 bg-white shadow-lg shadow-gray-300 p-6 rounded-3xl w-full lg:w-1/2">
           <h1 className="text-2xl font-bold mb-6">Upcoming Sessions</h1>
           <div className="flex flex-col gap-4">
-            <div className="flex items-center justify-between p-4 bg-gray-100 rounded-xl">
+            <div className="flex flex-col sm:flex-row items-center justify-between p-4 bg-gray-100 rounded-xl">
               <div className="flex items-center gap-4">
                 <div className="bg-blue-100 p-3 rounded-full">
                   <Video className="text-blue-500" size={24} />
@@ -99,13 +99,13 @@ export default function Home() {
                   <p className="text-sm text-gray-600">with John Doe</p>
                 </div>
               </div>
-              <div className="text-right">
+              <div className="text-center sm:text-right mt-4 sm:mt-0">
                 <p className="font-medium">Today, 2:00 PM</p>
                 <p className="text-sm text-gray-600">Duration: 1h</p>
               </div>
             </div>
 
-            <div className="flex items-center justify-between p-4 bg-gray-100 rounded-xl">
+            <div className="flex flex-col sm:flex-row items-center justify-between p-4 bg-gray-100 rounded-xl">
               <div className="flex items-center gap-4">
                 <div className="bg-green-100 p-3 rounded-full">
                   <MessageCircle className="text-green-500" size={24} />
@@ -115,7 +115,7 @@ export default function Home() {
                   <p className="text-sm text-gray-600">with Swayam Bansal</p>
                 </div>
               </div>
-              <div className="text-right">
+              <div className="text-center sm:text-right mt-4 sm:mt-0">
                 <p className="font-medium">Tomorrow, 10:00 AM</p>
                 <p className="text-sm text-gray-600">Duration: 1.5h</p>
               </div>
@@ -123,12 +123,12 @@ export default function Home() {
 
             <div className="flex items-center justify-center p-4 bg-gray-100 rounded-xl">
               <p className="text-lg font-medium text-gray-500">
-                Thats all for now!
+                That's all for now!
               </p>
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState } from "react";
 import {
   Dialog,
   DialogTitle,
@@ -7,7 +7,7 @@ import {
   Button,
   Avatar,
   Rating,
-} from "@mui/material"
+} from "@mui/material";
 import {
   Star,
   MessageSquare,
@@ -17,7 +17,7 @@ import {
   Clock,
   Paperclip,
   Pencil,
-} from "lucide-react"
+} from "lucide-react";
 
 export default function SessionDetailsDialog({
   session,
@@ -25,8 +25,8 @@ export default function SessionDetailsDialog({
   handleClose,
   onUpdateRating,
 }) {
-  const [isEditing, setIsEditing] = useState(false)
-  const [editedRating, setEditedRating] = useState(session.rating)
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedRating, setEditedRating] = useState(session.rating);
   const {
     name,
     avatar,
@@ -37,42 +37,42 @@ export default function SessionDetailsDialog({
     duration,
     type,
     notes,
-  } = session
+  } = session;
 
   const handleEditClick = () => {
-    setIsEditing(true)
-    setEditedRating(rating)
-  }
+    setIsEditing(true);
+    setEditedRating(rating);
+  };
 
   const handleRatingChange = (event, newValue) => {
-    setEditedRating(newValue)
-  }
+    setEditedRating(newValue);
+  };
 
   const handleSaveRating = () => {
-    onUpdateRating(session.id, editedRating)
-    setIsEditing(false)
-  }
+    onUpdateRating(session.id, editedRating);
+    setIsEditing(false);
+  };
 
   const handleCancel = () => {
-    setIsEditing(false)
-    setEditedRating(rating)
-  }
+    setIsEditing(false);
+    setEditedRating(rating);
+  };
 
   return (
-    <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
-      <DialogTitle className="text-2xl font-bold">
+    <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
+      <DialogTitle className="text-xl sm:text-2xl font-bold">
         {name} - Session Details
       </DialogTitle>
       <DialogContent>
-        <div className="flex flex-col gap-4 mt-4">
-          <div className="flex items-center gap-4">
+        <div className="flex flex-col gap-4 mt-4 px-2 sm:px-4">
+          <div className="flex flex-col sm:flex-row items-center gap-4">
             <Avatar src={avatar} style={{ width: 80, height: 80 }} />
             <div>
-              <h3 className="text-xl font-semibold">{name}</h3>
-              <p className="text-gray-600">{description}</p>
+              <h3 className="text-lg sm:text-xl font-semibold">{name}</h3>
+              <p className="text-xs sm:text-sm text-gray-600">{description}</p>
             </div>
           </div>
-          <div className="flex flex-col items-center gap-2 text-sm font-medium text-gray-700">
+          <div className="flex flex-col gap-2 text-sm font-medium text-gray-700">
             <div className="flex items-center gap-2">
               <Calendar size={16} /> <span>{date}</span>
             </div>
@@ -83,7 +83,7 @@ export default function SessionDetailsDialog({
               <Clock size={16} /> <span>{duration} min</span>
             </div>
           </div>
-          <div className="flex items-center gap-2 text-blue-600 font-semibold justify-center">
+          <div className="flex items-center gap-2 justify-center text-blue-600 font-semibold">
             {type === "chat" ? (
               <MessageSquare size={20} />
             ) : (
@@ -91,7 +91,7 @@ export default function SessionDetailsDialog({
             )}
             <span>{type === "chat" ? "Chat Session" : "Video Session"}</span>
           </div>
-          <div className="flex items-center gap-2 justify-center">
+          <div className="flex flex-col sm:flex-row items-center gap-2 justify-center">
             <p className="font-semibold">Rating:</p>
             {isEditing ? (
               <Rating
@@ -144,5 +144,5 @@ export default function SessionDetailsDialog({
         )}
       </DialogActions>
     </Dialog>
-  )
+  );
 }

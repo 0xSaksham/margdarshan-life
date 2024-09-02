@@ -62,17 +62,17 @@ const MentorBookingPage = () => {
   }
 
   return (
-    <div className="mx-auto px-4 py-8 flex h-full flex-col gap-6">
-      <div className="flex items-center gap-4">
+    <div className="mx-auto px-4 py-8 flex flex-col gap-6 max-w-screen-lg">
+      <div className="flex items-center justify-center gap-4">
         <Link href="/mentors">
           <div className="flex justify-center items-center border-2 border-gray-500 hover:border-gray-700 rounded-xl p-2">
             <ChevronLeft className="w-6 h-6" />
           </div>
         </Link>
-        <h1 className="text-4xl font-bold text-gray-800">Book your Session</h1>
+        <h1 className="text-4xl font-bold text-gray-800 text-center">Book your Session</h1>
       </div>
-      <div className="flex gap-4">
-        <div className="flex flex-col justify-between bg-white rounded-3xl shadow-md p-5 h-full min-w-[500px] items-center">
+      <div className="flex flex-col lg:flex-row gap-6">
+        <div className="flex flex-col bg-white rounded-3xl shadow-md p-5 flex-1 items-center">
           <Avatar
             style={{
               width: 140,
@@ -81,9 +81,9 @@ const MentorBookingPage = () => {
             }}
             src={mentor.pfp}
           />
-          <span className="text-2xl font-bold text-gray-800">John Doe</span>
+          <span className="text-2xl font-bold text-gray-800 mt-2">{mentor.name}</span>
 
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 mt-4 justify-center">
             {mentor.skills.map((skill, index) => (
               <Chip
                 key={index}
@@ -124,8 +124,8 @@ const MentorBookingPage = () => {
                 aria-label="session-type"
                 name="session-type"
                 className="flex flex-col gap-2"
-                value={sessionType} // Set the value to sessionType state
-                onChange={(e) => setSessionType(e.target.value)} // Update sessionType state on change
+                value={sessionType}
+                onChange={(e) => setSessionType(e.target.value)}
               >
                 <FormControlLabel
                   sx={{
@@ -136,9 +136,9 @@ const MentorBookingPage = () => {
                   value="chat"
                   control={<Radio />}
                   label={
-                    <div className="flex pr-3 items-center justify-between w-full">
+                    <div className="flex items-center justify-between w-full">
                       <div className="flex items-center gap-2">
-                        <MessageCircle className=" text-green-500" />
+                        <MessageCircle className="text-green-500" />
                         Chat Mentorship
                       </div>
                       <span className="font-bold text-lg">
@@ -157,9 +157,9 @@ const MentorBookingPage = () => {
                   value="video"
                   control={<Radio />}
                   label={
-                    <div className="flex pr-3 items-center justify-between w-full">
+                    <div className="flex items-center justify-between w-full">
                       <div className="flex items-center gap-2">
-                        <Video className=" text-blue-500" />
+                        <Video className="text-blue-500" />
                         Video Call Mentorship
                       </div>
                       <span className="font-bold text-lg">
@@ -173,9 +173,9 @@ const MentorBookingPage = () => {
             </FormControl>
           </div>
         </div>
-        <div className="flex flex-col justify-between bg-white rounded-3xl shadow-md p-5 w-full items-center">
+        <div className="flex flex-col bg-white rounded-3xl shadow-md p-5 flex-1 items-center">
           <h2 className="text-2xl font-bold mb-4">Select Date and Time</h2>
-          <div className="flex gap-4">
+          <div className="flex flex-col lg:flex-row gap-6">
             <div className="flex-1">
               <LocalizationProvider dateAdapter={AdapterDateFns}>
                 <DateCalendar
@@ -199,7 +199,7 @@ const MentorBookingPage = () => {
                       onClick={() => setSelectedTime(time)}
                       color={selectedTime === time ? "primary" : "default"}
                       variant={selectedTime === time ? "filled" : "outlined"}
-                      disabled={isTimeBlocked(time)} // Disable chip if time is blocked
+                      disabled={isTimeBlocked(time)}
                     />
                   )
                 })}
@@ -226,6 +226,7 @@ const MentorBookingPage = () => {
                   {selectedTime || "Not selected"}
                 </p>
               </div>
+
               <div className="flex items-center">
                 <HourglassIcon className="w-5 h-5 text-indigo-500 mr-3" />
                 <p className="text-gray-700">

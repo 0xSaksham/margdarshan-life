@@ -1,25 +1,25 @@
 export default function DeleteButton({
   clickFunction,
   disabled,
-  width,
-  height,
+  width = "auto", // Default width to auto
+  height = "auto", // Default height to auto
   buttonText,
 }) {
   return (
     <div
       onClick={!disabled ? clickFunction : null}
       style={{ width: width, height: height }}
-      className={
-        (disabled
-          ? "bg-red-500/70 hover:cursor-default"
-          : "hover:cursor-pointer hover:bg-red-400") +
-        ` transition-all duration-100 rounded-2xl flex justify-center font-medium text-white items-center bg-red-500`
-      }
+      className={`${
+        disabled
+          ? "bg-red-500/70 cursor-not-allowed"
+          : "bg-red-500 hover:bg-red-400 cursor-pointer"
+      } transition-all duration-200 rounded-2xl flex justify-center items-center font-medium text-white px-4 py-2 text-base md:text-lg lg:text-xl`}
     >
       {buttonText}
     </div>
   )
 }
+
 
 // Copy directly:
 {
