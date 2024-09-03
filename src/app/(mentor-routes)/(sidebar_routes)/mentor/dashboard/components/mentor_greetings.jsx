@@ -1,12 +1,15 @@
 "use client"
 
-import { Avatar } from "@mui/material"
+import { Avatar, Rating } from "@mui/material"
 import { Bell, Search } from "lucide-react"
 
-export default function MentorGreetings() {
+export default function MentorGreetings({ rating }) {
   return (
     <div className="flex items-center w-full justify-between">
-      <h1 className="text-3xl font-bold">Welcome Back Mentor!</h1>
+      <div className="flex items-center gap-4">
+        <h1 className="text-3xl font-bold">Welcome Back Mentor!</h1>
+        <Rating value={rating} readOnly precision={0.5} />
+      </div>
       <div className="flex items-center gap-3">
         <div className="bg-white rounded-full p-2 h-[40px] flex items-center justify-center w-[40px]">
           <Search size={20} />

@@ -36,7 +36,7 @@ export default function Home() {
 
   return (
     <div className="px-4 py-8 flex flex-col h-full gap-4">
-      <MentorGreetings />
+      <MentorGreetings rating={4.5} />
       <div className="flex flex-row gap-8 h-full justify-between">
         <div className="flex flex-col gap-4">
           <div className="flex flex-row gap-4">
