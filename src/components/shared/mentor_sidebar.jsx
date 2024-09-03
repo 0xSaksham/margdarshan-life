@@ -5,6 +5,7 @@ import {
   Bolt,
   Gauge,
   House,
+  IndianRupee,
   MessageCircleQuestion,
   MessagesSquare,
   Sun,
@@ -68,45 +69,35 @@ export default function MentorSidebar() {
             </Link>
 
             <Link
-              href="/mentors"
+              href="/mentor/earnings"
               className={
-                pathname.startsWith("/mentors")
+                pathname === "/mentor/earnings"
                   ? `${selectedIconColor} bg-[#4956F4] flex w-[50px] lg:w-[90%] rounded-full h-[50px] lg:p-3 lg:rounded-2xl items-center gap-3 justify-center lg:justify-normal`
                   : "flex w-[90%] h-[50px] lg:p-3 rounded-2xl items-center gap-3 justify-center lg:justify-normal"
               }
             >
-              <WandSparkles
+              <IndianRupee
                 color={
-                  pathname.startsWith("/mentors")
+                  pathname === "/mentor/earnings"
                     ? selectedIconColor
                     : iconColor
                 }
               />
-              <span className="hidden lg:inline">Mentors</span>
+              <span className="hidden lg:inline">Earnings</span>
             </Link>
+
             <Link
-              href="/sessions"
+              href="/mentor/inbox"
               className={
-                pathname === "/sessions"
-                  ? `${selectedIconColor} bg-[#4956F4] flex w-[50px] lg:w-[90%] rounded-full h-[50px] lg:p-3 lg:rounded-2xl items-center gap-3 justify-center lg:justify-normal`
-                  : "flex w-[90%] h-[50px] lg:p-3 rounded-2xl items-center gap-3 justify-center lg:justify-normal"
-              }
-            >
-              <Video
-                color={pathname === "/sessions" ? selectedIconColor : iconColor}
-              />
-              <span className="hidden lg:inline">Sessions</span>
-            </Link>
-            <Link
-              href="/inbox"
-              className={
-                pathname === "/inbox"
+                pathname === "/mentor/inbox"
                   ? `${selectedIconColor} bg-[#4956F4] flex w-[50px] lg:w-[90%] rounded-full h-[50px] lg:p-3 lg:rounded-2xl items-center gap-3 justify-center lg:justify-normal`
                   : "flex w-[90%] h-[50px] lg:p-3 rounded-2xl items-center gap-3 justify-center lg:justify-normal"
               }
             >
               <MessagesSquare
-                color={pathname === "/inbox" ? selectedIconColor : iconColor}
+                color={
+                  pathname === "/mentor/inbox" ? selectedIconColor : iconColor
+                }
               />
               <span className="hidden lg:inline">Inbox</span>
             </Link>
